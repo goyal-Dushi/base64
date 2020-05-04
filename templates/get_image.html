@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>DeviConvert</title>
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+<body style="  background-image : url('static/img/cover.jpg');background-repeat :no-repeat;background-size:cover;">
+</body>
+<!--<h1> Upload File !! </h1>-->
+<!--<form method=post enctype=multipart/form-data action="/">-->
+<!--    <input type=file name=file autocomplete="off" required>-->
+<!--    <input type=submit value=Upload>-->
+<!--</form>-->
+<!--<hr>-->
+<!--Below in the img source , it is getting the filename from the uploaded_file method-->
+
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand" style="font-family:cursive;">DeviConvert</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link" href="#">Features</a>
+                <!--                <a class="nav-link" href="#">Contact</a>-->
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="true">
+                    Contact Us
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Email</a>
+                    <a class="dropdown-item" href="#">Youtube</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading" style="font-family: 'Cantarell', sans-serif;font-size:40px;"> Upload File </h1>
+        <p class="lead" style="letter-spacing:2px;">
+            <b>Upload any .pdf .jpg .jpeg or .png file and get the base64 string generated for that file. The base64
+                string
+                is used in ML photo authentication models in order to perform various tasks.</b>
+        </p>
+        <br>
+        <form method=post enctype=multipart/form-data action="/">
+            <div class="form-group form-control-lg">
+                <input type=file name=file autocomplete="off" required>
+                <input type=submit value=Upload class="btn btn-primary btn-lg">
+            </div>
+        </form>
+        <hr>
+
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Site Developed by <a href="https://getbootstrap.com/">Dushyant</a>, Contact <a
+                    href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+    </footer>
+</div>
+{% if filename %}
+<img src="{{ url_for('uploaded_file',filename=filename) }}" height="300px" width="400px" border="3px"
+     class="img-thumbnail">
+{% endif %}
+{% endblock %}

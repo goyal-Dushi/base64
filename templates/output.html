@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Output</title>
+{% endblock %}
+
+{% block body %}
+{% if filename %}
+<img src="{{ url_for('uploaded_file',filename=filename) }}" height="300px" width="400px" border="3px"
+     class="img-thumbnail rounded flaot-left">
+{% endif %}
+{% endblock %}
