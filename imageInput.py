@@ -2,16 +2,16 @@ import base64
 
 from flask import Flask, url_for, redirect, request, flash, render_template
 import os
-from os.path import join, dirname, realpath
+# from os.path import join, dirname, realpath
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
 # UPLOADS_PATH = join(dirname(realpath(__file__)), 'static/uploads/')
-UPLOAD_FOLDER = 'static/uploads/'
+# UPLOAD_FOLDER = 'static/uploads/'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg'}
 
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = './static/uploads/'
 
 
 # checking for the file extension name
@@ -29,10 +29,10 @@ def checkFile(file_to_check):
     encoded_string = " "
     imageFile = ['.jpg', '.jpeg', '.png']
     if file_to_check.endswith(".pdf"):
-        with open(url_for('static', filename='uploads/' + file_to_check), "rb") as pdf_file:
+        with open(url_for('static/uploads/'+file_to_check), "rb") as pdf_file:
             encoded_string = base64.b64encode(pdf_file.read())
     elif file_to_check.endswith(tuple(imageFile)):
-        with open(file_to_check, "rb") as img_file:
+        with open('static/uploads/'+file_to_check, "rb") as img_file:
             encoded_string = base64.b64encode(img_file.read()).decode('utf-8')
     return encoded_string
 
@@ -40,7 +40,6 @@ def checkFile(file_to_check):
 # to check whether the file is uploaded by the user or not
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-    filename = ''
     base64_string = ''
     # imageFile = ['.jpg', '.jpeg', '.png']
     if request.method == 'POST':
@@ -58,23 +57,15 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             # basedir = os.path.abspath(os.path.dirname(__file__))
-            # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             base64_string = checkFile(filename)
-            # boolPDF = filename.rsplit('.', 1)[1].lower() in {'pdf'}
-            # boolImg = filename.rsplit('.', 1)[1].lower() in {'jpg', 'jpeg', 'png'}
-            # if filename.endswith(".pdf"):
-            #     with open(url_for('static', filename='uploads/' + filename), "rb") as pdf_file:
-            #         encoded_string = base64.b64encode(pdf_file.read())
-            # elif filename.endswith(tuple(imageFile)):
-            #     with open(url_for('static', filename='uploads/' + filename), "rb") as img_file:
-            #         encoded_string = base64.b64encode(img_file.read()).decode()
-    return render_template('output.html', filename=filename, string=base64_string)
+            return render_template('output.html', filename=filename, string=base64_string)
 
 
 # sending the image filename to the src of the image
 @app.route('/output/<filename>')
 def uploaded_file(filename):
-    return redirect('/output', filename=filename)
+    return redirect(url_for('static', filename='uploads/' + filename))
 
 
 if __name__ == "__main__":
