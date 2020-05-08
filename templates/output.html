@@ -10,8 +10,8 @@
 <!--Style 2-->
 
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Carousel</a>
+    <nav class="navbar nav-masthead justify-content-center navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">DeviConvert</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,64 +19,45 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/output" id="dropdown08" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">Contact Us</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown08">
+                        <a class="dropdown-item" type="email" href="mailto:dushyantgoyal28@outlook.com">Email</a>
+                        <a class="dropdown-item" href="https://www.youtube.com/channel/UCodZAmwytlullevIHFEf9sA?view_as=subscriber">Youtube</a>
+                        <a class="dropdown-item" href="#">FaceBook</a>
+                    </div>
                 </li>
             </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
     </nav>
 </header>
 
-<main role="main" id="site-main">
+<main role="main">
     <br><br><br>
-    <div class="container" style="justify-content: center;">
-        <div class="center">
-            <div class="row featurette align-elements-center">
-                <div class="col-md-7 order-md-1">
-                    <!--                <h2 class="featurette-heading">First featurette heading. <span-->
-                    <!--                        class="text-muted">It’ll blow your mind.</span>-->
-                    <!--                </h2>-->
-                    <p class="lead" style="font-family: 'Cantarell', sans-serif; font-size: 30px; color:black;">This is
-                        the uploaded file.</p>
-                </div>
-                <div class="col-md-5 order-md-2" id="container">
-                    <title>Placeholder</title>
-                    <img src="{{ url_for('uploaded_file',filename=filename) }}" width="350px" height="350px">
-                </div>
+    <div class="container">
+        <div class="row mx-lg-n5">
+            <div class="col py-3 px-lg-5 bg-light">
+                <h1>Image</h1>
             </div>
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading" style="font-family: 'Cantarell', sans-serif; color:black;">Base64 String</h2>
-                    <!--                <p class="lead" style="word-wrap: break-word;">{{ string }}</p>-->
-                </div>
-                <div class="col-md-5 order-md-1">
-                    <!--                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"-->
-                    <!--                     height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"-->
-                    <!--                     focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title>-->
-                    <rect width="100%" height="100%" fill="#eee">
-                    <textarea readonly rows="15" cols="50">
-                    {{ string }}
-                </textarea>
-                    </rect>
-                    <!--                    <text x="2%" y="10%" fill="#aaa" style="overflow-wrap : break-word;" >{{ string }}</text>-->
-                    <!--                </svg>-->
-                </div>
+            <div class="col">
+                <img src="{{ url_for('uploaded_file',filename=filename) }}" width="200px" height="200px">
+            </div>
+        </div>
+        <hr width="2px">
+        <div class="row">
+            <div class="col">
+                <textarea rows="13" cols="50">{{ string }}</textarea>
+            </div>
+            <div class="col py-3 px-lg-5 bg-light">
+                <h1>Base64 String</h1>
             </div>
         </div>
     </div>
 </main>
+
 <footer>
     <div class="inner">
         <p>Site Developed by <a href="https://getbootstrap.com/">Dushyant</a>, Contact <a
