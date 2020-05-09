@@ -6,43 +6,42 @@
 
 {% block body %}
 {{ super() }}
-<body style="  background-image : url('static/img/cover.jpg');background-repeat :no-repeat;background-size:cover;">
+<body style="  background-image : url('static/img/getimage.jpg');background-repeat :no-repeat;background-size:cover;" id="body">
 </body>
-<!--<h1> Upload File !! </h1>-->
-<!--<form method=post enctype=multipart/form-data action="/">-->
-<!--    <input type=file name=file autocomplete="off" required>-->
-<!--    <input type=submit value=Upload>-->
-<!--</form>-->
-<!--<hr>-->
-<!--Below in the img source , it is getting the filename from the uploaded_file method-->
-
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
-        <div class="inner">
-            <h3 class="masthead-brand" style="font-family:cursive;">DeviConvert</h3>
-            <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link active" href="#">Home</a>
-                <a class="nav-link" href="#">Features</a>
-                <!--                <a class="nav-link" href="#">Contact</a>-->
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="true">
-                    Contact Us
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Email</a>
-                    <a class="dropdown-item" href="#">Youtube</a>
-                </div>
-            </nav>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+            <a class="navbar-brand" href="#">Convert64</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+                    aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample09">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#body">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Visit us</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown09">
+                            <a class="dropdown-item" href="https://www.youtube.com/channel/UCodZAmwytlullevIHFEf9sA?view_as=subscriber">Youtube</a>
+                            <a class="dropdown-item" href="https://www.facebook.com/profile.php?id=100011488506933">FaceBook</a>
+                            <a class="dropdown-item" href="https://github.com/goyal-Dushi">Github</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <main role="main" class="inner cover">
-        <h1 class="cover-heading" style="font-family: 'Cantarell', sans-serif;font-size:40px;"> Upload File </h1>
-        <p class="lead" style="letter-spacing:2px;">
-            <b>Upload any .pdf .jpg .jpeg or .png file and get the base64 string generated for that file. The base64
-                string
-                is used in ML photo authentication models in order to perform various tasks.</b>
+        <h1 class="cover-heading" style="font-family: 'Cantarell', sans-serif;font-size:40px;color:black"> Upload File </h1>
+        <p class="lead" style="letter-spacing:3px;color:black;font-weight:bold;">
+            Upload any .pdf .jpg .jpeg or .png file and get the base64 string generated for that file. The base64
+                string is used in ML photo authentication models in order to perform various tasks.
         </p>
         <br>
         <form method=post enctype=multipart/form-data action="/">
@@ -57,8 +56,8 @@
 
     <footer class="mastfoot mt-auto">
         <div class="inner">
-            <p>Site Developed by <a href="https://getbootstrap.com/">Dushyant</a>, Contact <a
-                    href="https://twitter.com/mdo">@mdo</a>.</p>
+            <p style="color:black;">Site Developed by Dushyant, Contact <a
+                    href="mailto:dushyantgoyal28@outlook.com" style="color:blue; text-decoration:none;">@ME</a>.</p>
         </div>
     </footer>
 </div>

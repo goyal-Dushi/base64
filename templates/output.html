@@ -8,60 +8,69 @@
 {{ super() }}
 
 <!--Style 2-->
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
-<header>
-    <nav class="navbar nav-masthead justify-content-center navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">DeviConvert</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/output" id="dropdown08" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Contact Us</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown08">
-                        <a class="dropdown-item" type="email" href="mailto:dushyantgoyal28@outlook.com">Email</a>
-                        <a class="dropdown-item" href="https://www.youtube.com/channel/UCodZAmwytlullevIHFEf9sA?view_as=subscriber">Youtube</a>
-                        <a class="dropdown-item" href="#">FaceBook</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
+    <header class="masthead mb-auto">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+            <a class="navbar-brand" href="#">Convert64</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+                    aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-<main role="main">
-    <br><br><br>
-    <div class="container">
-        <div class="row mx-lg-n5">
-            <div class="col py-3 px-lg-5 bg-light">
-                <h1>Image</h1>
+            <div class="collapse navbar-collapse" id="navbarsExample09">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="templates/get_image.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Visit us</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown09">
+                            <a class="dropdown-item"
+                               href="https://www.youtube.com/channel/UCodZAmwytlullevIHFEf9sA?view_as=subscriber">Youtube</a>
+                            <a class="dropdown-item"
+                               href="https://www.facebook.com/profile.php?id=100011488506933">FaceBook</a>
+                            <a class="dropdown-item" href="https://github.com/goyal-Dushi">Github</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div class="col">
-                <img src="{{ url_for('uploaded_file',filename=filename) }}" width="200px" height="200px">
-            </div>
-        </div>
-        <hr width="2px">
-        <div class="row">
-            <div class="col">
-                <textarea rows="13" cols="50">{{ string }}</textarea>
-            </div>
-            <div class="col py-3 px-lg-5 bg-light">
-                <h1>Base64 String</h1>
-            </div>
-        </div>
-    </div>
-</main>
+        </nav>
+    </header>
 
-<footer>
-    <div class="inner">
-        <p>Site Developed by <a href="https://getbootstrap.com/">Dushyant</a>, Contact <a
-                href="https://twitter.com/mdo">@mdo</a>.</p>
-    </div>
-</footer>
-{% endblock %}
+
+    <main role="main">
+        <br><br><br>
+        <div class="container">
+            <div class="row mx-lg-n5">
+                <div class="col py-3 px-lg-5 bg-light">
+                    <h1 style="color:black;">Image</h1>
+                </div>
+                <div class="col">
+                    <img src="{{ url_for('uploaded_file',filename=filename) }}" width="200px" height="200px">
+                </div>
+            </div>
+            <hr width="2px">
+            <div class="row">
+                <div class="col">
+                    <textarea rows="13" cols="50">{{ string }}</textarea>
+                </div>
+                <div class="col py-3 px-lg-5 bg-light">
+                    <h1 style="color:black;">Base64 String</h1>
+                </div>
+            </div>
+            <br>
+        </div>
+    </main>
+    <br>
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p style="color:black;">Site Developed by <a href="https://getbootstrap.com/"
+                                                         style="color:black;text-decoration:none;">Dushyant</a>, Contact
+                <a
+                        href="https://twitter.com/mdo" style="color:blue; text-decoration:none;">@mdo</a>.</p>
+        </div>
+    </footer>
+</div>
+    {% endblock %}
