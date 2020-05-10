@@ -2,8 +2,8 @@ import base64
 
 from flask import Flask, url_for, redirect, request, flash, render_template
 import os
-# from os.path import join, dirname, realpath
 from werkzeug.utils import secure_filename
+from pdf2image import convert_from_path
 
 app = Flask(__name__)
 
@@ -29,7 +29,7 @@ def checkFile(file_to_check):
     encoded_string = " "
     imageFile = ['.jpg', '.jpeg', '.png']
     if file_to_check.endswith(".pdf"):
-        with open(url_for('static/uploads/'+file_to_check), "rb") as pdf_file:
+        with open('static/uploads/'+file_to_check, "rb") as pdf_file:
             encoded_string = base64.b64encode(pdf_file.read())
     elif file_to_check.endswith(tuple(imageFile)):
         with open('static/uploads/'+file_to_check, "rb") as img_file:
@@ -40,8 +40,6 @@ def checkFile(file_to_check):
 # to check whether the file is uploaded by the user or not
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-    base64_string = ''
-    # imageFile = ['.jpg', '.jpeg', '.png']
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -57,8 +55,14 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             # basedir = os.path.abspath(os.path.dirname(__file__))
+            # else:
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             base64_string = checkFile(filename)
+            if filename.endswith(".pdf"):
+                images = convert_from_path(filename.getpage[0])
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], images))
+                # os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                filename = images
             return render_template('output.html', filename=filename, string=base64_string)
 
 
